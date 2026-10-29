@@ -2,6 +2,8 @@ Agentic AI Systems Engineering Final Project
 # Agentic AI Systems Engineering Final Project
 
 > **Course source:** This capstone is an adaptation of the SDAIA Academy — Agentic AI Systems Engineering repository. It builds on the course's Madar Municipal Services / Rafeeq case study and capstone starter. Please retain attribution to the upstream repository and check its current terms before redistributing copied course files.
+>
+> Project Referance: https://github.com/sdaiaacademy/agentic-ai/
 
 ## Rafeeq — Production-Style Municipal Assistant
 
