@@ -1,9 +1,13 @@
 Agentic AI Systems Engineering Final Project
 
 > **Course source:** This capstone is an adaptation of the [SDAIA Academy — Agentic AI Systems Engineering repository](https://github.com/SDAIAAcademy/agentic-ai/). It builds on the course's Madar Municipal Services / Rafeeq case study and capstone starter. Please retain attribution to the upstream repository and check its current terms before redistributing copied course files.
+> 
 Rafeeq — Production-Style Municipal Assistant
 Rafeeq (رفيق) is a bilingual (Arabic/English) agent for the fictional Madar Municipal Services case study. It answers questions about municipal permits, fees, policy requirements, violations, and inspection availability. It can use tools to look up records, calculate fees, list inspection slots, and initiate supported actions within a bounded agent harness.
+
 > **Project status:** educational capstone prototype, not a production municipal service. All examples and records must be synthetic or public. Do not use real applicant data.
+>
+> 
 Project at a glance
 Capstone track: Track 1 — Rafeeq in production
 Runtime: Python with `uv run` (PEP 723 inline dependencies in course scripts)
@@ -12,11 +16,15 @@ Context controls: policy retrieval, bounded chat history, tool-result truncation
 Harness controls: read/write permission policy, interactive approval for CLI write actions, step/cost budgets, tool audit log
 Evaluation: 15 synthetic tasks, two prompt configurations (A/B), automatic graders
 UI: optional minimal Gradio chat for a quick Colab demonstration
+
+
 Important model history
 The model changed during development because the initial provider's free quota was exhausted. This is part of the experiment history and matters when interpreting the results.
 Initial model: `nvidia/nemotron-3.5-super-vl:free` through OpenRouter. It completed the initial five-task smoke test for both A and B. Later evaluation attempts hit `429 RateLimitError: free-models-per-day` on OpenRouter.
 Subsequent evaluation runs: `gemini-3.1-flash-lite` through Google AI Studio's OpenAI-compatible endpoint. This was configured to continue testing without purchasing OpenRouter credits. Rate-limit errors also occurred in some later runs, so retries were performed only for affected tasks.
 The reported evaluation figures below are based on the visible Colab runs and targeted retries, not a controlled benchmark comparing Nemotron against Gemini. The A/B comparison was intended to compare agent instructions while holding the selected model constant within a run. Model/provider configuration should be recorded alongside any future evaluation.
+
+
 Configure a model in Google Colab
 Store API keys in Colab Secrets and enable Notebook access. Do not paste keys into code cells that you commit to GitHub.
 Option A — OpenRouter / Nemotron
@@ -106,6 +114,8 @@ Total	213	7 distinct tools	Meets the minimum of three tools, including MCP.
 `create_refund` is registered in the starter's local tool list but did not appear in the captured 213-call audit summary, so it is not counted among the seven tools observed above. Counts reflect the audit log at the time it was inspected and may change after further runs.
 Approval behavior
 The interactive CLI uses `approve_cli()` to ask for confirmation before write tools are executed. The evaluation runner deliberately uses an automatic consent callback so that action tasks can be executed and graded without an interactive prompt. Therefore, passing action-task evaluations does not by itself prove that the interactive human-approval prompt was demonstrated in a live CLI run. The UI does not provide a separate approval interface in its current simple form.
+
+
 Evaluation
 Suite and graders
 `capstone/tasks.jsonl` contains 15 distinct synthetic tasks selected from the course's evaluation cases. They cover:
