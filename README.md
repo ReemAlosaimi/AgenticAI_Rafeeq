@@ -19,6 +19,8 @@ UI: optional minimal Gradio chat for a quick Colab demonstration
 
 
 Important model history
+
+
 The model changed during development because the initial provider's free quota was exhausted. This is part of the experiment history and matters when interpreting the results.
 Initial model: `nvidia/nemotron-3.5-super-vl:free` through OpenRouter. It completed the initial five-task smoke test for both A and B. Later evaluation attempts hit `429 RateLimitError: free-models-per-day` on OpenRouter.
 Subsequent evaluation runs: `gemini-3.1-flash-lite` through Google AI Studio's OpenAI-compatible endpoint. This was configured to continue testing without purchasing OpenRouter credits. Rate-limit errors also occurred in some later runs, so retries were performed only for affected tasks.
@@ -26,6 +28,7 @@ The reported evaluation figures below are based on the visible Colab runs and ta
 
 
 Configure a model in Google Colab
+
 Store API keys in Colab Secrets and enable Notebook access. Do not paste keys into code cells that you commit to GitHub.
 Option A — OpenRouter / Nemotron
 Run this before importing `agentkit`, `starter`, or `evals` in the runtime:
